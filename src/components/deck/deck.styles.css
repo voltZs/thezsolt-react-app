@@ -1,0 +1,54 @@
+.card{
+  position: absolute;
+  font-family: 'Roboto', sans-serif;
+  padding: 20px;
+  box-sizing: border-box;
+  font-size: 0.9em;
+  font-weight: 800;
+  width: 10em;
+  height: 15.5em;
+  border-radius: 1em;
+  display: flex;
+  flex-flow: column;
+  justify-content: space-between;
+  animation: 0.2s ease-out 0s 1 cardAppearAnimation;
+}
+
+@keyframes cardAppearAnimation{
+  0% {
+    margin-top: 200px;
+  }
+  100% {
+    margin-top: 0;
+  }
+}
+
+
+.linkCard{
+  color: #086788 !important;
+  background-color: #F0C808 !important;
+}
+
+.linkCard:hover{
+  cursor: pointer;
+  -webkit-box-shadow: -4px 2px 32px -15px rgba(0,0,0,1);
+  -moz-box-shadow: -4px 2px 32px -15px rgba(0,0,0,1);
+  box-shadow: -4px 2px 32px -15px rgba(0,0,0,1);
+}
+
+
+.masterCard{
+  color: #FFFFFF;
+  background-color: #232323;
+  -webkit-box-shadow: -4px 2px 32px -15px rgba(0,0,0,1);
+  -moz-box-shadow: -4px 2px 32px -15px rgba(0,0,0,1);
+  box-shadow: -4px 2px 32px -15px rgba(0,0,0,1);
+}
+
+.answerCard{
+  color: #232323;
+  background-color: #FFFFFF;
+  -webkit-box-shadow: -4px 2px 35px -22px rgba(0,0,0,0.46);
+  -moz-box-shadow: -4px 2px 35px -22px rgba(0,0,0,0.46);
+  box-shadow: -4px 2px 35px -22px rgba(0,0,0,0.46);
+}
