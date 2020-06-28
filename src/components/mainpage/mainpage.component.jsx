@@ -52,15 +52,18 @@ class MainPage extends React.Component{
   constructor(props){
     super(props)
     this.state = {
-      currentCard : -1,
-      master : [[]],
-      answers : [[]]
+      currentCard : 0,
+      master : CAH.master[0],
+      answers : CAH.answers[0],
+      prevMaster : null,
+      prevAnswers : null,
+      showCards: true
     }
   }
 
-  componentDidMount(){
-    this.addCard();
-  }
+  // componentDidMount(){
+  //   this.addCard();
+  // }
 
   handleScroll = (e) => {
     let el = e.target;
@@ -68,41 +71,42 @@ class MainPage extends React.Component{
     var curr =  Math.round(el.scrollTop/(el.scrollHeight) * (CAH.master.length));
     console.log(curr);
     if(curr > this.state.currentCard){
-      this.addCard();
+      this.changeCard(1);
     } else if(curr < this.state.currentCard){
-      this.removeCard();
+      this.changeCard(-1);
     }
   }
 
-  addCard = () => {
+  changeCard = (diff) => {
     this.setState((prevState) => {
-      let curr = prevState.currentCard+1
+      // let prev = prevState.currentCard;
+      let curr = prevState.currentCard+diff;
       return{
         currentCard: curr,
-        master: [...prevState.master, CAH.master[curr]],
-        answers: [...prevState.answers, CAH.answers[curr]]
+        showCards: false
       }
     }, () => {
-      console.log(this.state);
-    })
-  }
-
-  removeCard = () => {
-    this.setState((prevState) => {
-      var newMaster = [...prevState.master];
-      newMaster.pop();
-      var newAnswers = [...prevState.answers];
-      newAnswers.pop();
-
-      return {
-        currentCard: prevState.currentCard-1,
-        master: newMaster,
-        answers: newAnswers
-      }
-    })
+      setTimeout(() =>{
+        this.setState({master: null, answers: null}, () => {
+          this.setState({
+              showCards: true,
+              master: CAH.master[this.state.currentCard],
+              answers: CAH.answers[this.state.currentCard]
+          });
+        });
+      }, 300);
+    });
   }
 
   render(){
+
+    let leftDeck = this.state.master ?
+                  <Deck master hand={this.state.master}
+                    removeHand={!this.state.showCards}/> : null;
+    let rightDeck = this.state.answers ?
+                  <Deck hand={this.state.answers}
+                    removeHand={!this.state.showCards}/> : null;
+
     return(
       <div id="fakeBody" onScroll={this.handleScroll} >
         <div id="realBody">
@@ -110,15 +114,14 @@ class MainPage extends React.Component{
 
           <div id="decks">
             <div id="leftDeck">
-              <Deck master deck={this.state.master}/>
+              {leftDeck}
             </div>
             <div id="rightDeck">
-              <Deck deck={this.state.answers}/>
+              {rightDeck}
             </div>
           </div>
 
           <div id="foot">
-
             <a href="mailto:zs.zsolt.varga@gmail.com" target="_blank">
               <div className="button">
                 Get in touch

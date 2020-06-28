@@ -1,51 +1,53 @@
 import React from 'react';
 import './deck.styles.css';
 
-class Card extends React.Component {
-  constructor(props){
-    super(props);
-    this.state ={
-      cardStyle : props.style
-    }
-  }
+// class Card extends React.Component {
+//   constructor(props){
+//     super(props);
+//     this.state ={
+//       cardStyle : props.style
+//     }
+//   }
+//
+//   render(){
+//     return(
+//       <div className={`card ${this.props.cardType}`} style={this.state.cardStyle}>
+//         {this.props.content}
+//       </div>
+//     )
+//   }
+// }
+
+class Deck extends React.Component {
 
   render(){
-    return(
-      <div className={`card ${this.props.cardType}`} style={this.state.cardStyle}>
-        {this.props.content}
+    let cardType = this.props.master ? 'masterCard' : 'answerCard';
+    let removeClass = this.props.removeHand ? 'removed' : null;
+
+    let stack = this.props.hand.map((card, index) => {
+      var numOfCards = this.props.hand.length;
+      var modifier = index-((numOfCards-1)/2);
+      var ratio = (Math.random()*2)-1;
+      let style = {
+        transform: numOfCards < 2 ? "rotate("+ ratio*20 + "deg)" :
+                                  "rotate("+ modifier*(80/numOfCards) + "deg)",
+        left: numOfCards < 2 ? "" : modifier * 120 + "px"
+      };
+      return (
+        // <Card style={style} key={index}
+        //   content={card.content} cardType={cardType}></Card>
+        <div className={`card ${cardType}`} style={style}>
+          {card.content}
+        </div>
+      );
+    });
+
+    return (
+      <div className={`handOfCards ${removeClass}`}>
+        {stack}
       </div>
     )
   }
 }
 
-export const Deck = ({deck, master}) => {
-
-  let cardType = master ? 'masterCard' : 'answerCard';
-
-  let stack = deck.map((layer, layerIndex) => {
-    return (
-      <div key={layerIndex}>
-        {layer.map((card, index) => {
-          var numOfCards = layer.length;
-          var modifier = index-((numOfCards-1)/2);
-          var ratio = (Math.random()*2)-1;
-          let style = {
-            transform: numOfCards < 2 ? "rotate("+ ratio*20 + "deg)" :
-                                      "rotate("+ modifier*(80/numOfCards) + "deg)",
-            left: numOfCards < 2 ? "" : modifier * 120 + "px"
-          };
-          return (
-            <Card style={style} key={index}
-              content={card.content} cardType={cardType}></Card>
-          );
-        })}
-      </div>
-    )
-  });
-
-  return (
-    <div>
-      {stack}
-    </div>
-  )
-}
+export {Deck}
