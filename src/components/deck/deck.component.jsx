@@ -16,11 +16,22 @@ class Deck extends React.Component {
                                   "rotate("+ modifier*(80/numOfCards) + "deg)",
         left: numOfCards < 2 ? "" : modifier * 120 + "px"
       };
-      return (
-        <div className={`card ${cardType}`} style={style}>
-          {card.content}
+
+      let linkCard = card.link ? "linkCard" : null;
+      let cardComponent = (
+        <div className={`card ${cardType} ${linkCard}`} style={style}>
+          <div>{card.content}</div>
+          <div>{card.note}</div>
         </div>
       );
+      if(card.link != null){
+        cardComponent = (
+          <a href={card.link} target="_blank">
+            {cardComponent}
+          </a>
+        )
+      };
+      return cardComponent;
     });
 
     return (
