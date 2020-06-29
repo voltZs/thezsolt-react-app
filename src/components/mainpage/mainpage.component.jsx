@@ -57,7 +57,8 @@ class MainPage extends React.Component{
       answers : CAH.answers[0],
       prevMaster : null,
       prevAnswers : null,
-      showCards: true
+      showCards: true,
+      blockSwaps: false
     }
   }
 
@@ -98,6 +99,15 @@ class MainPage extends React.Component{
     });
   }
 
+  jumpToCard = (number) => {
+    console.log(this.fakeBody);
+    let scrollVal = number/CAH.master.length * this.fakeBody.scrollHeight;
+    console.log(scrollVal);
+    // let diff = number - this.state.currentCard;
+    // this.changeCard(diff);
+    this.fakeBody.scrollTop = scrollVal;
+  }
+
   render(){
 
     let leftDeck = this.state.master ?
@@ -106,11 +116,25 @@ class MainPage extends React.Component{
     let rightDeck = this.state.answers ?
                   <Deck hand={this.state.answers}
                     removeHand={!this.state.showCards}/> : null;
+    let indicatorArray = [];
+    for(var i=0; i<CAH.master.length; i++){
+      (function(i, that){
+        let active = i === that.state.currentCard ? "active" : null;
+        let clickHandler = () => {
+          that.jumpToCard(i);
+        };
+        indicatorArray.push(
+          <div className={`pageIndicator ${active}`} onClick={clickHandler}></div>
+        );
+      })(i, this);
+    }
 
     return(
-      <div id="fakeBody" onScroll={this.handleScroll} >
+      <div id="fakeBody" onScroll={this.handleScroll} ref={(el) => this.fakeBody = el}>
         <div id="realBody">
-          <div id="head"></div>
+          <div id="head">
+            {indicatorArray}
+          </div>
 
           <div id="decks">
             <div id="leftDeck">
