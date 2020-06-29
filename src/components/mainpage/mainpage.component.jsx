@@ -62,19 +62,14 @@ class MainPage extends React.Component{
     }
   }
 
-  // componentDidMount(){
-  //   this.addCard();
-  // }
-
   handleScroll = (e) => {
     let el = e.target;
-    // console.log(el.scrollTop);
     var curr =  Math.round(el.scrollTop/(el.scrollHeight) * (CAH.master.length));
     console.log(curr);
-    if(curr > this.state.currentCard){
-      this.changeCard(1);
-    } else if(curr < this.state.currentCard){
-      this.changeCard(-1);
+
+    if(curr !== this.state.currentCard){
+      let diff = curr - this.state.currentCard;
+      this.changeCard(diff);
     }
   }
 
@@ -103,8 +98,6 @@ class MainPage extends React.Component{
     console.log(this.fakeBody);
     let scrollVal = number/CAH.master.length * this.fakeBody.scrollHeight;
     console.log(scrollVal);
-    // let diff = number - this.state.currentCard;
-    // this.changeCard(diff);
     this.fakeBody.scrollTop = scrollVal;
   }
 

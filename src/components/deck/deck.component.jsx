@@ -1,23 +1,6 @@
 import React from 'react';
 import './deck.styles.css';
 
-// class Card extends React.Component {
-//   constructor(props){
-//     super(props);
-//     this.state ={
-//       cardStyle : props.style
-//     }
-//   }
-//
-//   render(){
-//     return(
-//       <div className={`card ${this.props.cardType}`} style={this.state.cardStyle}>
-//         {this.props.content}
-//       </div>
-//     )
-//   }
-// }
-
 class Deck extends React.Component {
 
   render(){
@@ -34,8 +17,6 @@ class Deck extends React.Component {
         left: numOfCards < 2 ? "" : modifier * 120 + "px"
       };
       return (
-        // <Card style={style} key={index}
-        //   content={card.content} cardType={cardType}></Card>
         <div className={`card ${cardType}`} style={style}>
           {card.content}
         </div>
