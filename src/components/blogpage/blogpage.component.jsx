@@ -16,7 +16,6 @@ class BlogPage extends React.Component {
   }
 
   updatePosts = () => {
-    console.log("updating posts");
     fetch('blog.json')
     .then(res => res.json())
     .then(data => {
@@ -46,7 +45,6 @@ class BlogPage extends React.Component {
     let posts = this.state.posts.map((post, index) => {
 
       let toggleArticle = () => {
-        console.log("called toggleArticle");
         this.togglePostCollapse(index);
       }
 

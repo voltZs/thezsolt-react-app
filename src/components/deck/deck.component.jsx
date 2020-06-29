@@ -11,9 +11,13 @@ class Deck extends React.Component {
       var numOfCards = this.props.hand.length;
       var modifier = index-((numOfCards-1)/2);
       var ratio = (Math.random()*2)-1;
+      let trans = "translateX(-50%)";
+      let spread = window.innerWidth < 700 ?
+                  `translateX(${modifier*(-30)}%)` : "";
+      console.log(spread);
       let style = {
-        transform: numOfCards < 2 ? "rotate("+ ratio*20 + "deg)" :
-                                  "rotate("+ modifier*(80/numOfCards) + "deg)",
+        transform: numOfCards < 2 ? trans+"rotate("+ ratio*20 +"deg)" :
+                  trans + spread + "rotate("+ modifier*(90/numOfCards) + "deg)",
         left: numOfCards < 2 ? "" : modifier * 120 + "px"
       };
 

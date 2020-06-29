@@ -14,6 +14,14 @@
   transition: all 0.3s;
 }
 
+@media only screen and (max-width: 1000px) {
+  .card{
+    width: 20vh;
+    height: 30vh;
+    font-size: 0.5em;
+  }
+}
+
 .handOfCards{
   animation: 0.3s ease-out 0s 1 cardAppearAnimation;
   transition: margin-top 0.3s;

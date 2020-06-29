@@ -67,12 +67,12 @@ div#foot > div{
 
 div#leftDeck{
   position: relative;
-  width: 260px;
+  width: 1px;
   height: 400px;
 }
 
 div#rightDeck{
   position: relative;
-  width: 260px;
+  width: 1px;
   height: 400px;
 }

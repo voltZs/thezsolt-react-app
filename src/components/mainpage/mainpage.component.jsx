@@ -21,7 +21,6 @@ class MainPage extends React.Component{
   handleScroll = (e) => {
     let el = e.target;
     var curr =  Math.round(el.scrollTop/(el.scrollHeight) * (CAH.master.length));
-    console.log(curr);
 
     if(curr !== this.state.currentCard){
       let diff = curr - this.state.currentCard;
@@ -51,9 +50,7 @@ class MainPage extends React.Component{
   }
 
   jumpToCard = (number) => {
-    console.log(this.fakeBody);
     let scrollVal = number/CAH.master.length * this.fakeBody.scrollHeight;
-    console.log(scrollVal);
     this.fakeBody.scrollTop = scrollVal;
   }
 
