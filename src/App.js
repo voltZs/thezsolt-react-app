@@ -12,6 +12,9 @@ function App() {
       <Route exact path='/'>
         <MainPage></MainPage>
       </Route>
+      <Route path='/index.html'>
+        <MainPage></MainPage>
+      </Route>
       <Route exact path='/blog'>
         <BlogPage></BlogPage>
       </Route>
