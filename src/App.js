@@ -1,10 +1,25 @@
 import React from 'react';
+import {Switch, Route} from 'react-router-dom';
 import './styles.css';
 import {MainPage} from './components/mainpage/mainpage.component.jsx';
+import {BlogPage} from './components/blogpage/blogpage.component.jsx';
+import {PageNotFound} from './components/pagenotfound/pagenotfound.component.jsx';
+
 
 function App() {
   return (
-    <MainPage></MainPage>
+    <Switch>
+      <Route exact path='/'>
+        <MainPage></MainPage>
+      </Route>
+      <Route exact path='/blog'>
+        <BlogPage></BlogPage>
+      </Route>
+      <Route path='/'>
+        <PageNotFound></PageNotFound>
+      </Route>
+    </Switch>
+
   );
 }
 

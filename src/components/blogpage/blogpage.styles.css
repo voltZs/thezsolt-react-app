@@ -1,0 +1,67 @@
+.blogContainer{
+  display: flex;
+  flex-direction: column;
+  width: 70%;
+  max-width: 800px;
+  height: 100vh;
+  box-sizing: border-box;
+  margin: 0 auto;
+  padding: 90px 0;
+  /* overflow-y: scroll; */
+  /* Hide scrollbar for IE and Edge */
+  /* -ms-overflow-style: none; */
+}
+/* Hide scrollbar for Chrome, Safari and Opera */
+/* .gameBoard::-webkit-scrollbar {
+  display: none;
+} */
+
+.blogPost{
+  margin: 20px 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.blogPostTitle{
+  display: flex;
+  flex-basis: content;
+  font-weight: bold;
+  color: white;
+  /* background-color: rgba(255,255,255,0.75); */
+  padding: 5px 15px;
+  border-radius: 50px;
+  margin-bottom: 15px;
+}
+
+.blogPostBody{
+  font-size: 0.65em;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  width: 100%;
+  background-color: rgba(255,255,255,1);
+  border-radius: 20px;
+  padding: 20px 20px;
+  box-sizing: border-box;
+  text-align: justify;
+  transition: all 0.4s ease-out;
+}
+
+.postDate{
+  font-weight: bold;
+  margin-bottom: 15px;
+}
+
+.moreButton{
+  margin-top: 15px;
+  align-self: center;
+}
+
+.blogPostBody.collapsed{
+  background-color: rgba(255,255,255,0.8);
+}
+
+.blogPostBody.collapsed:hover{
+  background-color: rgba(255,255,255,1);
+}

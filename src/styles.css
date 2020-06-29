@@ -6,6 +6,7 @@ html{
 } */
 
 body {
+  color: #086788;
   padding: none;
   margin: 0;
   font-family: 'Montserrat', sans-serif;
@@ -13,7 +14,7 @@ body {
   /* -ms-overflow-style: none; */
   /* background-color: #06AED5; */
   background: rgb(0,207,255);
-background: radial-gradient(circle, rgba(0,207,255,1) 0%, rgba(0,145,207,1) 100%);
+  background: radial-gradient(circle, rgba(0,207,255,1) 0%, rgba(0,145,207,1) 100%);
 }
 
 img{
@@ -48,6 +49,11 @@ a{
   padding: 5px 15px;
   background-color: #F0C808;
   border-radius: 1em;
+}
+
+button.button{
+  outline: none;
+  border: none;
 }
 
 .button:hover{
